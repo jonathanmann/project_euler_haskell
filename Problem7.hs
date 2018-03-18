@@ -9,16 +9,9 @@ getLowPrimes k = [x | x <- [2..isqrt k], mod k x == 0, isPrime(x)]
 isPrime :: Int -> Bool
 isPrime k = null $ getLowPrimes k
 
-getHighPrime :: Int -> Int -> Int
-getHighPrime k x = if mod k x == 0 && isPrime(r) then r else 0
-    where r = div k x
-
-getPrimes :: Int -> [Int]
-getPrimes k = [(getHighPrime k x) | x <- lowPrimes] ++ lowPrimes
-    where lowPrimes = getLowPrimes k
-
-getLargestPrime :: Int -> Int
-getLargestPrime k  = maximum (getPrimes k)
+getNthPrime :: Int -> Int
+getNthPrime n = allPrimes !! (n - 1)
+    where allPrimes = [x | x <- [2..], isPrime(x)]
 
 main :: IO ()
-main = putStrLn $ show $ getLargestPrime 600851475143
+main = putStrLn $ show $ getNthPrime 10001
