@@ -1,0 +1,4 @@
+utilities/
+python_euler/
+*.sw[op]
+*.pyc
